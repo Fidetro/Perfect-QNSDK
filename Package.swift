@@ -1,7 +1,7 @@
 import PackageDescription
 
 let package = Package(
-	name: "Perfect-QNSDK",
+	name: "PerfectQNSDK",
 	dependencies: [
 		.Package(url: "https://github.com/PerfectlySoft/Perfect-Crypto", majorVersion: 3)
 	],
