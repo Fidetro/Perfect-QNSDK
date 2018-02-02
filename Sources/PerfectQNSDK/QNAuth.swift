@@ -8,7 +8,7 @@
 import PerfectCrypto
 import Foundation
 
-class QNAuth: NSObject {
+public class QNAuth: NSObject {
     
     private static var accessKey = "AccessKey"
     private static var secretKey = "SecretKey"
