@@ -18,9 +18,12 @@ public class QNAuth: NSObject {
         _ = PerfectCrypto.isInitialized
     }
     public static func token(putPolicy:[String:Any]) -> String?{
-        guard let encodePolicy = encodedPutPolicy(putPolicy) else { return nil}
-        guard let encodeSign = encodedSign(encodePolicy) else { return nil}
-        
+        guard var encodePolicy = encodedPutPolicy(putPolicy) else { return nil}
+        guard var encodeSign = encodedSign(encodePolicy) else { return nil}
+        encodeSign = encodeSign.replacingOccurrences(of: "+", with: "-")
+        encodeSign = encodeSign.replacingOccurrences(of: "/", with: "_")
+        encodePolicy = encodePolicy.replacingOccurrences(of: "+", with: "-")
+        encodePolicy = encodePolicy.replacingOccurrences(of: "/", with: "_")
         let uploadToken = accessKey + ":" + encodeSign + ":" + encodePolicy
         return uploadToken
     }
